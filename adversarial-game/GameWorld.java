@@ -57,12 +57,14 @@ public class GameWorld extends World
         isGameOver = false;
     }
 
+    
     /**
      * Set up the entire world.
      */
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
+        setBackground();
         addLeftGround();
         addFences();
         addClouds();
@@ -70,6 +72,35 @@ public class GameWorld extends World
         addPlayerTwo();
     }
 
+    
+    /**
+     * Randomly choose and set a background
+     */
+    private void setBackground()
+    {
+       int x = Greenfoot.getRandomNumber(7);
+       Decoration background;
+       if (x == 1)
+       {
+           background = new BG_1(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
+       } else if (x == 2) {
+           background = new BG_2(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
+       } else if (x == 3) {
+           background = new BG_3(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
+       }else if (x == 4) {
+           background = new BG_4(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
+       }else if (x == 5) {
+           background = new BG_5(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
+       }else if (x == 6) {
+           background = new BG_6(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
+       } else {
+           background = new BG_7(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
+        }
+       
+       addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-64);
+    }
+    
+    
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */
