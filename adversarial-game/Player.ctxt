@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Player
 comment0.text=\n\ This\ is\ the\ class\ for\ the\ "main\ character"\ in\ the\ action.\n\ \n\ @author\ R.\ Gordon\n\ @version\ May\ 8,\ 2019\n
-comment1.params=startingX\ playerName\ walkingImagesCount\ punchingImagesCount\ moveLeftWithKey\ moveRightWithKey\ jumpWithKey\ punchWithKey
-comment1.target=Player(int,\ java.lang.String,\ int,\ int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.params=startingX\ playerName\ walkingImagesCount\ punchingImagesCount\ moveLeftWithKey\ moveRightWithKey\ jumpWithKey\ punchWithKey\ healthDisplayPosition
+comment1.target=Player(int,\ java.lang.String,\ int,\ int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
 comment1.text=\n\ Constructor\n\ \n\ This\ runs\ once\ when\ the\ Player\ object\ is\ created.\n
 comment10.params=direction
 comment10.target=void\ animateWalk(java.lang.String)
@@ -19,6 +19,8 @@ comment13.text=\n\ Make\ a\ player\ punch.\n
 comment14.params=
 comment14.target=void\ checkGameOver()
 comment14.text=\n\ When\ the\ player\ falls\ off\ the\ bottom\ of\ the\ screen,\n\ game\ is\ over.\ We\ must\ remove\ them.\n
+comment15.params=
+comment15.target=void\ decreaseHealth()
 comment2.params=
 comment2.target=void\ initializeWalkingImages()
 comment2.text=\n\ Get\ images\ ready\ to\ animate\ walking.\n
@@ -43,4 +45,4 @@ comment8.text=\n\ Make\ the\ player\ jump.\n
 comment9.params=
 comment9.target=void\ fall()
 comment9.text=\n\ Make\ the\ player\ fall.\n
-numComments=15
+numComments=16

@@ -14,6 +14,9 @@ public abstract class Player extends Collision
      * 
      * These are available for use in any method below.
      */    
+
+    public int health = 5;
+
     // Horizontal speed (change in horizontal position, or delta X)
     private int deltaX = 4;
 
@@ -24,7 +27,7 @@ public abstract class Player extends Collision
     private int acceleration = 2;
 
     // Strength of a jump
-    private int jumpStrength = -12;
+    private int jumpStrength = -24;
 
     // Track whether game is over or not
     private boolean isGameOver;
@@ -59,7 +62,7 @@ public abstract class Player extends Collision
     // For walking animation
     private GreenfootImage punchingRightImages[];
     private GreenfootImage punchingLeftImages[];
-    private static final int PUNCH_ANIMATION_DELAY = 13;
+    private static final int PUNCH_ANIMATION_DELAY = 8;
 
     // Keeps track of total number of walking image frames (varies by character)
     int countOfPunchingImages;
@@ -70,14 +73,20 @@ public abstract class Player extends Collision
     // Name of player images
     private String imageNamePrefix;
 
+    // Where this player's health is displayed horizontally
+    private int healthPosition;
+
     /**
      * Constructor
      * 
      * This runs once when the Player object is created.
      */
     Player(int startingX, String playerName, int walkingImagesCount, int punchingImagesCount,
-    String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey)
+    String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey, int healthDisplayPosition)
     {
+        // Where the player's health gets displayed horizontally.
+        healthPosition = healthDisplayPosition;
+
         // Assign how many walking image frames there are
         countOfWalkingImages = walkingImagesCount;
 
@@ -471,18 +480,16 @@ public abstract class Player extends Collision
         {
             // Get world reference
             GameWorld world = (GameWorld)getWorld();
-            
+
             // Check here for hit
             // (We have finished a punch and are touching another character)
             if (this.touch(Player.class))
-            {
-                world.showText("Scored a punch", 100, 100);
+            {                
+                // Get a reference to the specific player we are touching
+                Player otherPlayer = (Player)this.getOneIntersectingObject(Player.class);
+                otherPlayer.decreaseHealth();
             }
-            else
-            {
-                world.showText("", 100, 100);
-            }
-            
+
             // Start animation loop from beginning
             punchingFrames = 0;
         }
@@ -501,7 +508,7 @@ public abstract class Player extends Collision
         int offScreenVerticalPosition = (world.getHeight() + this.getImage().getHeight() / 2);
 
         // Off bottom of screen?
-        if (this.getY() > offScreenVerticalPosition)
+        if (health == 0)
         {
             // Remove the player
             isGameOver = true;
@@ -511,5 +518,12 @@ public abstract class Player extends Collision
             // Tell the user game is over
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
+    }
+
+    public void decreaseHealth()
+    {
+        health -= 1;
+        GameWorld world = (GameWorld) getWorld(); 
+        world.showText("" + health, healthPosition, 100);
     }
 }
