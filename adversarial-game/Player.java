@@ -476,16 +476,16 @@ public abstract class Player extends Collision
             // (We have finished a punch and are touching another character)
             if (this.touch(Player.class))
             {
-                HealthBar healthbar = GameWorld.getHealthBar();
-                //decreases health bar by 1
-                HeathBar.loseHealth();
+                //HealthBar healthbar = GameWorld.getHealthBar();
+                ///decreases health bar by 1
+                //HealthBar.loseHealth();
                 
                 world.showText("Scored a punch", 100, 100);
                 
                 //makes myworld
                 World myWorld = getWorld();
                 //makes a variable called space (turns variable method into game type world)
-                Game game = (GameWorld)myWorld;
+                //Game game = (GameWorld)myWorld;
             }
             else
             {

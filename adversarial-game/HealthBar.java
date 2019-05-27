@@ -5,7 +5,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HealthBar extends Player
+public class HealthBar extends Decoration
 {
 
     int health = 8;
@@ -16,10 +16,15 @@ public class HealthBar extends Player
      * Act - do whatever the HealthBar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public HealthBar()
+    HealthBar(int scrollableWorldX, int scrollableWorldY)
     {
-        update(); //runs code when its created automatically
+        super(scrollableWorldX, scrollableWorldY);
     }
+    
+    //public HealthBar()
+    //{
+    //    update(); //runs code when its created automatically
+    //}
     
     public void act() 
     {
@@ -39,7 +44,7 @@ public class HealthBar extends Player
         
     }
     
-    public void LoseHealth
+    public void LoseHealth()
     {
         health--;
     }

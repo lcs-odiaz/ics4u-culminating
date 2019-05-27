@@ -40,7 +40,8 @@ public class GameWorld extends World
     Player playerTwo;
     
     // makes health bar
-    HealthBar healthBar = new HealthBar
+    HealthBar HealthBar;
+    
     // Track whether game is on
     private boolean isGameOver;
 
@@ -61,9 +62,9 @@ public class GameWorld extends World
         isGameOver = false;
     }
     
-    public healthBar getHealthBar ()
+    public HealthBar getHealthBar()
     {
-        return healthbar;
+        return HealthBar;
     }
     /**
      * Set up the entire world.
@@ -76,7 +77,7 @@ public class GameWorld extends World
         addClouds();
         addPlayerOne();
         addPlayerTwo();
-        addObject(healthBar, 200, 40);
+        addObject(HealthBar, 200, 40);
     }
 
     /**
