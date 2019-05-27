@@ -71,7 +71,7 @@ public class GameWorld extends World
         // addPlayerTwo();
         setBackground();
         ericLevel();
-        
+        setMusic();        
     }
 
     private void ericLevel()
@@ -149,7 +149,19 @@ public class GameWorld extends World
            background = new BG_7(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
         }
        
-       addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-64);
+       addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
+    }
+    
+        /**
+     * Randomly choose and set a background
+     */
+    private void setMusic()
+    {
+        int x = Greenfoot.getRandomNumber(9);
+       
+        GreenfootSound backgroundMusic = new GreenfootSound(x + ".mp3");
+        backgroundMusic.playLoop();
+
     }
     
     /**
