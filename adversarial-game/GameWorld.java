@@ -38,7 +38,8 @@ public class GameWorld extends World
     // Main player
     Player playerOne;
     Player playerTwo;
-    
+    Decoration POneHB;
+    Decoration PTwoHB;
     // makes health bar
     HealthBar HealthBar;
     
@@ -77,7 +78,8 @@ public class GameWorld extends World
         addClouds();
         addPlayerOne();
         addPlayerTwo();
-        addObject(HealthBar, 200, 40);
+        addPlayerOneHealthBar();
+        addPlayerTwoHealthBar();
     }
 
     /**
@@ -145,7 +147,30 @@ public class GameWorld extends World
     public void act()
     {
     }
+    
+    private void addPlayerOneHealthBar()
+    {
+        // Initial horizontal position
+        int initialX = TILE_SIZE * 3;
 
+        // Instantiate the main player object object
+        POneHB = new HealthBar(initialX, 100);
+
+        // Add player in bottom left corner of screen
+        addObject(POneHB, initialX, 100);
+    }
+    
+    private void addPlayerTwoHealthBar()
+    {
+        // Initial horizontal position
+        int initialX = VISIBLE_WIDTH - TILE_SIZE * 3;
+
+        // Instantiate the main player object object
+        PTwoHB = new HealthBar(initialX, 100);
+
+        // Add player in bottom left corner of screen
+        addObject(PTwoHB, initialX, 100);
+    }
     /**
      * Add the main player to the world.
      */

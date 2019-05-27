@@ -20,6 +20,7 @@ public class HealthBar extends Decoration
     {
         super(scrollableWorldX, scrollableWorldY);
     }
+
     
     //public HealthBar()
     //{
