@@ -69,8 +69,9 @@ public class GameWorld extends World
         // addClouds();
         // addPlayerOne();
         // addPlayerTwo();
-        
+        setBackground();
         ericLevel();
+        
     }
 
     private void ericLevel()
