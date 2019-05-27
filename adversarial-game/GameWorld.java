@@ -69,8 +69,9 @@ public class GameWorld extends World
         // addClouds();
         // addPlayerOne();
         // addPlayerTwo();
-        
+        setBackground();
         ericLevel();
+        
     }
 
     private void ericLevel()
@@ -148,7 +149,7 @@ public class GameWorld extends World
            background = new BG_7(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
         }
        
-       addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-64);
+       addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
     }
     
     /**
