@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Guile extends Player
 {
+    //
+    boolean hitsGuile = false;
     /**
      * Constructor
      * 

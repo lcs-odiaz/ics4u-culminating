@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameWorld extends World
 {
+    //creates a health bar object
     /**
      * Instance variables
      * 
@@ -18,6 +19,7 @@ public class GameWorld extends World
     private static final int TILE_SIZE = 32;
     private static final int HALF_TILE_SIZE = TILE_SIZE / 2;
 
+    
     // World size constants
     // TO STUDENTS: Modify only if you're sure
     //              Should be a resolution that's a multiple of TILE_SIZE
@@ -36,7 +38,9 @@ public class GameWorld extends World
     // Main player
     Player playerOne;
     Player playerTwo;
-
+    
+    // makes health bar
+    HealthBar healthBar = new HealthBar
     // Track whether game is on
     private boolean isGameOver;
 
@@ -56,7 +60,11 @@ public class GameWorld extends World
         // Game on
         isGameOver = false;
     }
-
+    
+    public healthBar getHealthBar ()
+    {
+        return healthbar;
+    }
     /**
      * Set up the entire world.
      */
@@ -68,6 +76,7 @@ public class GameWorld extends World
         addClouds();
         addPlayerOne();
         addPlayerTwo();
+        addObject(healthBar, 200, 40);
     }
 
     /**

@@ -469,14 +469,23 @@ public abstract class Player extends Collision
         }
         else
         {
-            // Get world reference
-            GameWorld world = (GameWorld)getWorld();
             
+            // Get object reference to world
+            GameWorld world = (GameWorld) getWorld();
             // Check here for hit
             // (We have finished a punch and are touching another character)
             if (this.touch(Player.class))
             {
+                HealthBar healthbar = GameWorld.getHealthBar();
+                //decreases health bar by 1
+                HeathBar.loseHealth();
+                
                 world.showText("Scored a punch", 100, 100);
+                
+                //makes myworld
+                World myWorld = getWorld();
+                //makes a variable called space (turns variable method into game type world)
+                Game game = (GameWorld)myWorld;
             }
             else
             {
