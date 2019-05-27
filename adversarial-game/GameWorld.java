@@ -64,14 +64,65 @@ public class GameWorld extends World
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        setBackground();
-        addLeftGround();
-        addFences();
-        addClouds();
-        addPlayerOne();
-        addPlayerTwo();
+        // addLeftGround();
+        // addFences();
+        // addClouds();
+        // addPlayerOne();
+        // addPlayerTwo();
+        
+        ericLevel();
     }
 
+    private void ericLevel()
+    {
+        // How many tiles will cover the bottom of the initial visible area of screen?
+        final int tilesToCreate = getWidth() / TILE_SIZE;
+        
+        //Loop three times to make three sets of blocks
+        for (int j = 0; j < 65; j += 32)
+        {
+            // Loop to create and add the tile objects
+            for (int i = 0; i < tilesToCreate; i += 1)
+            {
+                // Add ground objects at bottom of screen
+                // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+                int x = i * TILE_SIZE + HALF_TILE_SIZE;
+                int y = getHeight() - HALF_TILE_SIZE - j;
+        
+                // Create a ground tile
+                Ground groundTile = new Ground(x, y);
+        
+                // Add the objects
+                addObject(groundTile, x, y);
+            }
+        }
+        
+        addPlayerOne ();
+        addPlayerTwo();
+     
+        // How many plates total?
+        final int COUNT_OF_METAL_PLATES = 8;
+        final int PLATES_PER_GROUP = 4;
+
+         // Add groups of plates
+        for (int i = 0; i < 321; i += 320)
+        {
+            // Group of four metal plates all at same y position
+            int y = 272;
+
+            // Add the individual plates in a given group
+            for (int j = 0; j < 97; j += 32)
+            {
+                int x = 112 + i + j;
+                MetalPlate plate = new MetalPlate(x, y);
+                addObject(plate, x, y);
+            }
+        }
+        
+    
+    
+    }
+    
     
     /**
      * Randomly choose and set a background
@@ -99,7 +150,6 @@ public class GameWorld extends World
        
        addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-64);
     }
-    
     
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
@@ -212,5 +262,37 @@ public class GameWorld extends World
     {
         isGameOver = true;
     }
+
+    private void addMetalPlateSteps()
+    {
+        // How many plates total?
+        final int COUNT_OF_METAL_PLATES = 20;
+        final int PLATES_PER_GROUP = 4;
+
+        // Add groups of plates
+        for (int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 1)
+        {
+            // Group of four metal plates all at same y position
+            int y = VISIBLE_HEIGHT - HALF_TILE_SIZE * 3 - i * TILE_SIZE;
+
+            // Add the individual plates in a given group
+            for (int j = 0; j < PLATES_PER_GROUP; j += 1)
+            {
+                int x = VISIBLE_WIDTH + TILE_SIZE * 2 + TILE_SIZE * (i + j) + TILE_SIZE * 5 * i;
+                MetalPlate plate = new MetalPlate(x, y);
+                addObject(plate, x, y);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 }
 

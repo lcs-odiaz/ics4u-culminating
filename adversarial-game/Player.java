@@ -21,7 +21,7 @@ public abstract class Player extends Collision
     private int deltaX = 4;
 
     // Vertical speed (change in vertical position, or delta Y)
-    private int deltaY = 2;
+    private int deltaY = 0;
 
     // Acceleration for falls
     private int acceleration = 2;
@@ -205,9 +205,11 @@ public abstract class Player extends Collision
             // Standing still; reset walking animation
             walkingFrames = 0;
         }
-
+        
+        System.out.println(verticalDirection);
+        
         // Jumping
-        if (Greenfoot.isKeyDown(jumpKey) && !isGameOver)
+        if (Greenfoot.isKeyDown(jumpKey) && !isGameOver && verticalDirection == JUMPING_DOWN)
         {
             // Only able to jump when on a solid object
             if (onPlatform())
@@ -222,11 +224,11 @@ public abstract class Player extends Collision
      */
     public void checkFall()
     {
-        if (onPlatform())
+        if (onPlatform() && verticalDirection == JUMPING_DOWN)
         {
             // Stop falling
             deltaY = 0;
-
+            
             // Set image
             if (horizontalDirection == FACING_RIGHT && Greenfoot.isKeyDown("right") == false)
             {
@@ -244,17 +246,17 @@ public abstract class Player extends Collision
             Actor rearUnder = getOneObjectAtOffset(0 - getImage().getWidth() / 3, getImage().getHeight() / 2, Platform.class);
 
             // Bump the player back up so that they are not "submerged" in a platform object
-            if (directlyUnder != null)
+            if (directlyUnder != null && verticalDirection == JUMPING_DOWN)
             {
                 int correctedYPosition = directlyUnder.getY() - directlyUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
                 setLocation(getX(), correctedYPosition);
             }
-            if (frontUnder != null)
+            if (frontUnder != null && verticalDirection == JUMPING_DOWN)
             {
                 int correctedYPosition = frontUnder.getY() - frontUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
                 setLocation(getX(), correctedYPosition);
             }
-            if (rearUnder != null)
+            if (rearUnder != null && verticalDirection == JUMPING_DOWN)
             {
                 int correctedYPosition = rearUnder.getY() - rearUnder.getImage().getHeight() / 2 - this.getImage().getHeight() / 2;
                 setLocation(getX(), correctedYPosition);
@@ -285,8 +287,10 @@ public abstract class Player extends Collision
         {
             return true;
         }
+    
+        
     }
-
+    
     /**
      * Make the player jump.
      */
@@ -294,7 +298,7 @@ public abstract class Player extends Collision
     {
         // Track vertical direction
         verticalDirection = JUMPING_UP;
-
+        
         // Set image
         if (horizontalDirection == FACING_RIGHT)
         {
