@@ -10,13 +10,21 @@ comment10.text=\n\ Return\ an\ object\ reference\ to\ the\ first\ player.\n
 comment11.params=
 comment11.target=void\ setGameOver()
 comment11.text=\n\ Set\ game\ over\n
+<<<<<<< HEAD
 comment12.params=
 comment12.target=void\ addMetalPlateSteps()
+=======
+>>>>>>> master
 comment2.params=
 comment2.target=void\ setup()
 comment2.text=\n\ Set\ up\ the\ entire\ world.\n
 comment3.params=
+<<<<<<< HEAD
 comment3.target=void\ ericLevel()
+=======
+comment3.target=void\ setBackground()
+comment3.text=\n\ Randomly\ choose\ and\ set\ a\ background\n
+>>>>>>> master
 comment4.params=
 comment4.target=void\ addLeftGround()
 comment4.text=\n\ Add\ blocks\ to\ create\ the\ ground\ to\ walk\ on\ at\ bottom-left\ of\ scrollable\ world.\n
@@ -35,4 +43,8 @@ comment8.text=\n\ Add\ the\ main\ player\ to\ the\ world.\n
 comment9.params=
 comment9.target=void\ addPlayerTwo()
 comment9.text=\n\ Add\ the\ main\ player\ to\ the\ world.\n
+<<<<<<< HEAD
 numComments=13
+=======
+numComments=12
+>>>>>>> master
