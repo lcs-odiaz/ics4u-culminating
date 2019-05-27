@@ -206,8 +206,6 @@ public abstract class Player extends Collision
             walkingFrames = 0;
         }
         
-        System.out.println(verticalDirection);
-        
         // Jumping
         if (Greenfoot.isKeyDown(jumpKey) && !isGameOver && verticalDirection == JUMPING_DOWN)
         {
