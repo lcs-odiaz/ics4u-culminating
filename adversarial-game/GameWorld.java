@@ -64,11 +64,6 @@ public class GameWorld extends World
     private void setup()
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
-        // addLeftGround();
-        // addFences();
-        // addClouds();
-        // addPlayerOne();
-        // addPlayerTwo();
         setBackground();
         ericLevel();
         setMusic();        
@@ -119,17 +114,16 @@ public class GameWorld extends World
                 addObject(plate, x, y);
             }
         }
-        
-    
     
     }
     
     
     /**
-     * Randomly choose and set a background
-     */
+    * Randomly choose and set a background
+    */
     private void setBackground()
     {
+<<<<<<< HEAD
        int x = Greenfoot.getRandomNumber(7);
        Decoration background;
        
@@ -151,6 +145,10 @@ public class GameWorld extends World
        }
        
        addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
+=======
+      Decoration background = new BG_1(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
+      addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
+>>>>>>> f76e51c7ba06b230ebe449ac2cc46c48bc74224b
     }
     
         /**
