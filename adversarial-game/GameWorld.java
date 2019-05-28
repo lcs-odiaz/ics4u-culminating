@@ -44,6 +44,9 @@ public class GameWorld extends World
     Decoration PTwoHB;
     // makes health bar
     HealthBar HealthBar;
+    
+    //makes Health Kit
+    Decoration HealthKit;
 
     // Track whether game is on
     private boolean isGameOver;
@@ -218,6 +221,14 @@ public class GameWorld extends World
     public void hitLanded()
     {
         hitsLanded += 1;
+       
+        // Check to see if we've hit a threshold of hits where we want to add a HealthKit
+         if (hitsLanded % 5 == 0)
+        {
+           HealthKit hk = new HealthKit(VISIBLE_WIDTH/2,VISIBLE_HEIGHT -TILE_SIZE);
+           addObject(hk, VISIBLE_WIDTH /2, VISIBLE_HEIGHT - TILE_SIZE - TILE_SIZE/2);
+        }
+        
     }
     
 }

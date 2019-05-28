@@ -34,7 +34,9 @@ public class HealthKit extends Decoration
           
           
           getWorld().removeObject(this);
-        }    
-    }
+        }  
+
+}
+    
 }
 
