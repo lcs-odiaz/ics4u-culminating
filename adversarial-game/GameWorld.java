@@ -123,32 +123,9 @@ public class GameWorld extends World
     */
     private void setBackground()
     {
-<<<<<<< HEAD
-       int x = Greenfoot.getRandomNumber(7);
-       Decoration background;
-       
-       if (x == 1)
-       {
-           background = new BG_1(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
-       } else if (x == 2) {
-           background = new BG_2(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
-       } else if (x == 3) {
-           background = new BG_3(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
-       }else if (x == 4) {
-           background = new BG_4(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
-       }else if (x == 5) {
-           background = new BG_5(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
-       }else if (x == 6) {
-           background = new BG_6(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
-       } else {
-           background = new BG_7(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
-       }
-       
-       addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
-=======
       Decoration background = new BG_1(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
       addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
->>>>>>> f76e51c7ba06b230ebe449ac2cc46c48bc74224b
+
     }
     
         /**
