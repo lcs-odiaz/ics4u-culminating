@@ -33,6 +33,9 @@ public class GameWorld extends World
     // TO STUDENTS: Add to this list of constants if you wish to have additional player types
     public static final String PLAYER_GUILE = "guile";
     public static final String PLAYER_VIGA = "viga";
+    
+    // Track hits
+    private int hitsLanded;
 
     // Main player
     Player playerOne;
@@ -60,6 +63,9 @@ public class GameWorld extends World
 
         // Game on
         isGameOver = false;
+        
+        // No hits to start game
+        hitsLanded = 0;
     }
 
     public HealthBar getHealthBar()
@@ -205,5 +211,14 @@ public class GameWorld extends World
     {
         isGameOver = true;
     }
+    
+    /**
+     * Record a hit.
+     */
+    public void hitLanded()
+    {
+        hitsLanded += 1;
+    }
+    
 }
 

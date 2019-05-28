@@ -49,6 +49,12 @@ public class HealthBar extends Decoration
     public void loseHealth()
     {
         health--;
+        
+        // Get an object reference to the world
+        GameWorld myWorld = (GameWorld) getWorld();
+        
+        // Tracks a hit
+        myWorld.hitLanded();
     }
     
     public void refillHealth()
