@@ -50,4 +50,9 @@ public class HealthBar extends Decoration
     {
         health--;
     }
+    
+    public void refillHealth()
+    {
+        health = 8;
+    }
 }
