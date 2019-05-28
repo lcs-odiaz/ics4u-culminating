@@ -11,6 +11,13 @@ public class BG_1 extends Decoration
     BG_1(int scrollableWorldX, int scrollableWorldY)
     {
         super(scrollableWorldX, scrollableWorldY);
+        
+        for (int i = 0; i < 1; i += 1)
+        {
+            int x = Greenfoot.getRandomNumber(7);
+            setImage(x + ".png");
+        }
+        
     } 
     
     /**
@@ -19,6 +26,6 @@ public class BG_1 extends Decoration
      */
     public void act() 
     {
-        // Add your action code here.
+
     }    
 }
