@@ -32,6 +32,8 @@ public class HealthKit extends Decoration
           
           thePlayer.getHealthBar().refillHealth();
           
+          
+          getWorld().removeObject(this);
         }    
     }
 }
