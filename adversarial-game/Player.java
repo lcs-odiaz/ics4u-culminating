@@ -489,6 +489,8 @@ public abstract class Player extends Collision
             {                
                 // Get a reference to the specific player we are touching
                 Player otherPlayer = (Player)this.getOneIntersectingObject(Player.class);
+                //GreenfootSound punch = new GreenfootSound("punch.mp3");
+                Greenfoot.playSound("punch.mp3");
                 otherPlayer.decreaseHealth();
             }
 
