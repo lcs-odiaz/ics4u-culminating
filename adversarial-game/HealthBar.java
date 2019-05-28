@@ -12,6 +12,7 @@ public class HealthBar extends Decoration
     int HealthBarWidth = 80;
     int HealthBarHeight = 15;
     int PixelsPerHealthPoint = (int)HealthBarWidth/health;
+    
     /**
      * Act - do whatever the HealthBar wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,16 +22,16 @@ public class HealthBar extends Decoration
         super(scrollableWorldX, scrollableWorldY);
     }
 
-    
     //public HealthBar()
     //{
     //    update(); //runs code when its created automatically
     //}
-    
+
     public void act() 
     {
         update();//updates the code from the update code on the screen
     }
+
     public void update()
     {
         //creates new image
@@ -39,14 +40,14 @@ public class HealthBar extends Decoration
         myImage.setColor(Color.BLACK);
         myImage.drawRect(0,0, HealthBarWidth + 1, HealthBarHeight + 1);
         //draws a rectangle
-        
+
         myImage.setColor(Color.RED);
         myImage.fillRect(1,1, health*PixelsPerHealthPoint, HealthBarHeight);
-        
+
     }
-    
-    public void LoseHealth()
+
+    public void loseHealth()
     {
         health--;
     }
-    }
+}

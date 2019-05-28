@@ -19,7 +19,6 @@ public class GameWorld extends World
     private static final int TILE_SIZE = 32;
     private static final int HALF_TILE_SIZE = TILE_SIZE / 2;
 
-    
     // World size constants
     // TO STUDENTS: Modify only if you're sure
     //              Should be a resolution that's a multiple of TILE_SIZE
@@ -42,7 +41,7 @@ public class GameWorld extends World
     Decoration PTwoHB;
     // makes health bar
     HealthBar HealthBar;
-    
+
     // Track whether game is on
     private boolean isGameOver;
 
@@ -62,11 +61,12 @@ public class GameWorld extends World
         // Game on
         isGameOver = false;
     }
-    
+
     public HealthBar getHealthBar()
     {
         return HealthBar;
     }
+
     /**
      * Set up the entire world.
      */
@@ -78,8 +78,6 @@ public class GameWorld extends World
         addClouds();
         addPlayerOne();
         addPlayerTwo();
-        addPlayerOneHealthBar();
-        addPlayerTwoHealthBar();
     }
 
     /**
@@ -147,30 +145,7 @@ public class GameWorld extends World
     public void act()
     {
     }
-    
-    private void addPlayerOneHealthBar()
-    {
-        // Initial horizontal position
-        int initialX = TILE_SIZE * 3;
 
-        // Instantiate the main player object object
-        POneHB = new HealthBar(initialX, 100);
-
-        // Add player in bottom left corner of screen
-        addObject(POneHB, initialX, 100);
-    }
-    
-    private void addPlayerTwoHealthBar()
-    {
-        // Initial horizontal position
-        int initialX = VISIBLE_WIDTH - TILE_SIZE * 3;
-
-        // Instantiate the main player object object
-        PTwoHB = new HealthBar(initialX, 100);
-
-        // Add player in bottom left corner of screen
-        addObject(PTwoHB, initialX, 100);
-    }
     /**
      * Add the main player to the world.
      */
@@ -184,6 +159,9 @@ public class GameWorld extends World
 
         // Add player in bottom left corner of screen
         addObject(playerOne, initialX, getHeight() / 4 * 3);
+        
+        // Add the player's health bar in left corner the screen
+        addObject(playerOne.getHealthBar(), initialX, 50);
     }
 
     /**
@@ -199,14 +177,25 @@ public class GameWorld extends World
 
         // Add player in bottom left corner of screen
         addObject(playerTwo, initialX, getHeight() / 4 * 3);
+        
+        // Add the player's health bar in left corner the screen
+        addObject(playerTwo.getHealthBar(), initialX, 50);
     }
 
     /**
      * Return an object reference to the first player.
      */
-    public Player getMainPlayer()
+    public Player getPlayerOne()
     {
         return playerOne;
+    }
+
+    /**
+     * Return an object reference to the second player.
+     */
+    public Player getPlayerTwo()
+    {
+        return playerTwo;
     }
 
     /**

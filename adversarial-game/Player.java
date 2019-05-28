@@ -14,9 +14,6 @@ public abstract class Player extends Collision
      * 
      * These are available for use in any method below.
      */    
-    
-    
-    
     // Horizontal speed (change in horizontal position, or delta X)
     private int deltaX = 4;
 
@@ -72,6 +69,9 @@ public abstract class Player extends Collision
 
     // Name of player images
     private String imageNamePrefix;
+    
+    // My health bar
+    HealthBar myHealth;
 
     /**
      * Constructor
@@ -113,6 +113,9 @@ public abstract class Player extends Collision
 
         // Get images ready for punching animation
         initializePunchingImages();
+        
+        // Initialize the health bar
+        myHealth = new HealthBar(startingX, 200);
     }
 
     /**
@@ -191,7 +194,7 @@ public abstract class Player extends Collision
         }
         else if (Greenfoot.isKeyDown(punchKey) && !isGameOver)
         {
-            System.out.println("key received for punch");
+            //System.out.println("key received for punch");
             punch();
         }
         else
@@ -458,7 +461,7 @@ public abstract class Player extends Collision
         // Animate
         if (stage < punchingRightImages.length)
         {
-            System.out.println("in punch method" + stage);
+            //System.out.println("in punch method" + stage);
             // Set image for this stage of the animation
             if (horizontalDirection == FACING_RIGHT)
             {
@@ -479,9 +482,17 @@ public abstract class Player extends Collision
             // (We have finished a punch and are touching another character)
             if (this.touch(Player.class))
             {
-                //HealthBar healthbar = GameWorld.getHealthBar();
-                ///decreases health bar by 1
-                //HealthBar.loseHealth();
+                // Get a reference to the other player
+                Player otherPlayer = world.getPlayerOne();
+                
+                // Make sure that this player object reference is the other player
+                if (otherPlayer == this)
+                {
+                    otherPlayer = world.getPlayerTwo();
+                }
+                
+                // Reduce that player's health
+                otherPlayer.getHealthBar().loseHealth();
                 
                 world.showText("Scored a punch", 100, 100);
                 
@@ -498,6 +509,14 @@ public abstract class Player extends Collision
             // Start animation loop from beginning
             punchingFrames = 0;
         }
+    }
+    
+    /**
+     * Returns the health bar for this player
+     */
+    public HealthBar getHealthBar()
+    {
+        return myHealth;
     }
 
     /**
