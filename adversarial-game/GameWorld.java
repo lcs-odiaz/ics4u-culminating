@@ -132,6 +132,7 @@ public class GameWorld extends World
     {
        int x = Greenfoot.getRandomNumber(7);
        Decoration background;
+       
        if (x == 1)
        {
            background = new BG_1(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
@@ -147,7 +148,7 @@ public class GameWorld extends World
            background = new BG_6(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
        } else {
            background = new BG_7(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
-        }
+       }
        
        addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
     }
