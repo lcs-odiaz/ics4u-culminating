@@ -76,9 +76,6 @@ public abstract class Player extends Collision
     //health kit
     HealthKit refillHealth;
     
-    //hit count for when to make refill bar
-    int hitcount;
-
     /**
      * Constructor
      * 
@@ -490,7 +487,7 @@ public abstract class Player extends Collision
             {
                 // Get a reference to the other player
                 Player otherPlayer = world.getPlayerOne();
-                hitcount++;
+
                 // Make sure that this player object reference is the other player
                 if (otherPlayer == this)
                 {
@@ -499,18 +496,6 @@ public abstract class Player extends Collision
                 
                 // Reduce that player's health
                 otherPlayer.getHealthBar().loseHealth();
-                
-                //world.showText("Scored a punch", 100, 100);
-                
-                if (hitcount == 5)
-                {
-                    //make health kit appear in the middle of the screen
-                    World myWorld = getWorld();
-                }
-                    //makes myworld
-                World myWorld = getWorld();
-                //makes a variable called space (turns variable method into game type world)
-                //Game game = (GameWorld)myWorld;
             }
             else
             {
