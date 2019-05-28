@@ -226,7 +226,7 @@ public class GameWorld extends World
          if (hitsLanded % 5 == 0)
         {
            HealthKit hk = new HealthKit(VISIBLE_WIDTH/2,VISIBLE_HEIGHT -TILE_SIZE);
-           addObject(hk, VISIBLE_WIDTH /2, VISIBLE_HEIGHT - TILE_SIZE - TILE_SIZE/2);
+           addObject(hk,TILE_SIZE * Greenfoot.getRandomNumber(18) + TILE_SIZE, VISIBLE_HEIGHT - TILE_SIZE - TILE_SIZE/2);
         }
         
     }
