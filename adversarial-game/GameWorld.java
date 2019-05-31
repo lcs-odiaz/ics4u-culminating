@@ -93,7 +93,7 @@ public class GameWorld extends World
             }
         }
         
-        addPlayerOne ();
+        addPlayerOne();
         addPlayerTwo();
      
         // How many plates total?
