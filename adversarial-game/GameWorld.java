@@ -33,7 +33,7 @@ public class GameWorld extends World
     // TO STUDENTS: Add to this list of constants if you wish to have additional player types
     public static final String PLAYER_GUILE = "guile";
     public static final String PLAYER_VIGA = "viga";
-    
+
     // Track hits
     private int hitsLanded;
 
@@ -44,12 +44,15 @@ public class GameWorld extends World
     Decoration PTwoHB;
     // makes health bar
     HealthBar HealthBar;
-    
+
     //makes Health Kit
     Decoration HealthKit;
 
     // Track whether game is on
     private boolean isGameOver;
+    
+    // Background music
+    GreenfootSound backgroundMusic;
 
     /**
      * Constructor for objects of class GameWorld.
@@ -66,7 +69,7 @@ public class GameWorld extends World
 
         // Game on
         isGameOver = false;
-        
+
         // No hits to start game
         hitsLanded = 0;
     }
@@ -76,7 +79,22 @@ public class GameWorld extends World
         return HealthBar;
     }
 
+    /**
+     * This method is called when the world is 'Run'
+     */
+    public void started()
+    {
+        setMusic();
+    }
     
+    /**
+     * This method is called when the world is paused.
+     */
+    public void stopped()
+    {
+        backgroundMusic.stop();
+    }
+
     /**
      * Set up the entire world.
      */
@@ -85,14 +103,13 @@ public class GameWorld extends World
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
         setBackground();
         ericLevel();
-        setMusic();        
     }
 
     private void ericLevel()
     {
         // How many tiles will cover the bottom of the initial visible area of screen?
         final int tilesToCreate = getWidth() / TILE_SIZE;
-        
+
         //Loop three times to make three sets of blocks
         for (int j = 0; j < 65; j += 32)
         {
@@ -103,23 +120,23 @@ public class GameWorld extends World
                 // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
                 int x = i * TILE_SIZE + HALF_TILE_SIZE;
                 int y = getHeight() - HALF_TILE_SIZE - j;
-        
+
                 // Create a ground tile
                 Ground groundTile = new Ground(x, y);
-        
+
                 // Add the objects
                 addObject(groundTile, x, y);
             }
         }
-        
+
         addPlayerOne();
         addPlayerTwo();
-     
+
         // How many plates total?
         final int COUNT_OF_METAL_PLATES = 8;
         final int PLATES_PER_GROUP = 4;
 
-         // Add groups of plates
+        // Add groups of plates
         for (int i = 0; i < 321; i += 320)
         {
             // Group of four metal plates all at same y position
@@ -133,32 +150,28 @@ public class GameWorld extends World
                 addObject(plate, x, y);
             }
         }
-    
-    }
-    
-    
-    /**
-    * Randomly choose and set a background
-    */
-    private void setBackground()
-    {
-      Decoration background = new BG_1(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
-      addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
 
     }
-    
-        /**
+
+    /**
      * Randomly choose and set a background
+     */
+    private void setBackground()
+    {
+        Decoration background = new BG_1(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
+        addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
+    }
+
+    /**
+     * Randomly choose and set background music
      */
     private void setMusic()
     {
         int x = Greenfoot.getRandomNumber(9);
-       
-        GreenfootSound backgroundMusic = new GreenfootSound(x + ".mp3");
+        backgroundMusic = new GreenfootSound(x + ".mp3");
         backgroundMusic.playLoop();
-
     }
-    
+
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */
@@ -238,7 +251,7 @@ public class GameWorld extends World
 
         // Add player in bottom left corner of screen
         addObject(playerOne, initialX, getHeight() / 4 * 3);
-        
+
         // Add the player's health bar in left corner the screen
         addObject(playerOne.getHealthBar(), initialX, 50);
     }
@@ -256,7 +269,7 @@ public class GameWorld extends World
 
         // Add player in bottom left corner of screen
         addObject(playerTwo, initialX, getHeight() / 4 * 3);
-        
+
         // Add the player's health bar in left corner the screen
         addObject(playerTwo.getHealthBar(), initialX, 50);
     }
@@ -284,21 +297,21 @@ public class GameWorld extends World
     {
         isGameOver = true;
     }
-    
+
     /**
      * Record a hit.
      */
     public void hitLanded()
     {
         hitsLanded += 1;
-       
+
         // Check to see if we've hit a threshold of hits where we want to add a HealthKit
-         if (hitsLanded % 5 == 0)
+        if (hitsLanded % 5 == 0)
         {
-           HealthKit hk = new HealthKit(VISIBLE_WIDTH/2,VISIBLE_HEIGHT -TILE_SIZE);
-           addObject(hk,TILE_SIZE * Greenfoot.getRandomNumber(18) + TILE_SIZE, VISIBLE_HEIGHT - TILE_SIZE - TILE_SIZE/2);
+            HealthKit hk = new HealthKit(VISIBLE_WIDTH/2,VISIBLE_HEIGHT -TILE_SIZE);
+            addObject(hk,TILE_SIZE * Greenfoot.getRandomNumber(18) + TILE_SIZE, VISIBLE_HEIGHT - TILE_SIZE - TILE_SIZE/2);
         }
-        
+
     }
 }
 
