@@ -66,7 +66,7 @@ public class GameWorld extends World
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
         setBackground();
         ericLevel();
-        //setMusic();        
+        setMusic();        
     }
 
     private void ericLevel()
