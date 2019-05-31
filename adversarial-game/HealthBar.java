@@ -59,7 +59,7 @@ public class HealthBar extends Decoration
     
     public void refillHealth()
     {
-        health = 8;
+        health += 2;
     }
     
     public int getHealth()
