@@ -6,6 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
+
 public class Viga extends Player
 {
 
@@ -14,10 +15,11 @@ public class Viga extends Player
      * 
      * Runs once when this object is created
      */
-    Viga(int startingX, String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey, int healthDisplayPosition)
+    boolean hitsViga = false;
+    Viga(int startingX, String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey)
     {
         // Invoke the superclass constructor
-        super(startingX, "viga", 2, 3, moveLeftWithKey, moveRightWithKey, jumpWithKey, punchWithKey, healthDisplayPosition);
+        super(startingX, "viga", 2, 3, moveLeftWithKey, moveRightWithKey, jumpWithKey, punchWithKey);
     }
 
     /**

@@ -61,4 +61,9 @@ public class HealthBar extends Decoration
     {
         health = 8;
     }
+    
+    public int getHealth()
+    {
+        return health;
+    }
 }

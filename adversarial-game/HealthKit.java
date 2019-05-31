@@ -17,7 +17,7 @@ public class HealthKit extends Decoration
     {
         super(scrollableWorldX, scrollableWorldY);
     }
-    
+
     /**
      * Act - do whatever the HealthKit wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -27,16 +27,15 @@ public class HealthKit extends Decoration
         // when health bar touches a character, their health refills
         if (this.isTouching(Player.class))
         {
-          // get the actual object the health kit is touching
-          Player thePlayer = (Player) getOneIntersectingObject(Player.class);
-          
-          thePlayer.getHealthBar().refillHealth();
-          
-          
-          getWorld().removeObject(this);
+            // get the actual object the health kit is touching
+            Player thePlayer = (Player) getOneIntersectingObject(Player.class);
+
+            thePlayer.getHealthBar().refillHealth();
+
+            getWorld().removeObject(this);
         }  
 
-}
-    
+    }
+
 }
 

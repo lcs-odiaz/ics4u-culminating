@@ -14,9 +14,6 @@ public abstract class Player extends Collision
      * 
      * These are available for use in any method below.
      */    
-
-    public int health = 5;
-
     // Horizontal speed (change in horizontal position, or delta X)
     private int deltaX = 4;
 
@@ -85,10 +82,9 @@ public abstract class Player extends Collision
      * This runs once when the Player object is created.
      */
     Player(int startingX, String playerName, int walkingImagesCount, int punchingImagesCount,
-    String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey, int healthDisplayPosition)
+    String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey)
     {
         // Where the player's health gets displayed horizontally.
-        healthPosition = healthDisplayPosition;
 
         // Assign how many walking image frames there are
         countOfWalkingImages = walkingImagesCount;
@@ -538,8 +534,8 @@ public abstract class Player extends Collision
         // Vertical position where player no longer visible
         int offScreenVerticalPosition = (world.getHeight() + this.getImage().getHeight() / 2);
 
-        // Off bottom of screen?
-        if (health == 0)
+        // Dead?
+        if (myHealth.getHealth() == 0)
         {
             // Remove the player
             isGameOver = true;
@@ -551,10 +547,4 @@ public abstract class Player extends Collision
         }
     }
 
-    public void decreaseHealth()
-    {
-        health -= 1;
-        GameWorld world = (GameWorld) getWorld(); 
-        world.showText("" + health, healthPosition, 100);
-    }
 }

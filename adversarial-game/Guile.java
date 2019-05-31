@@ -15,10 +15,10 @@ public class Guile extends Player
      * 
      * Runs once when this object is created
      */
-    Guile(int startingX, String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey, int healthDisplayPosition)
+    Guile(int startingX, String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey)
     {
         // Invoke the superclass constructor
-        super(startingX, "guile", 4, 3, moveLeftWithKey, moveRightWithKey, jumpWithKey, punchWithKey, healthDisplayPosition);
+        super(startingX, "guile", 4, 3, moveLeftWithKey, moveRightWithKey, jumpWithKey, punchWithKey);
     }
 
     /**

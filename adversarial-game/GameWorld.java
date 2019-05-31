@@ -112,7 +112,7 @@ public class GameWorld extends World
             }
         }
         
-        addPlayerOne ();
+        addPlayerOne();
         addPlayerTwo();
      
         // How many plates total?
@@ -234,7 +234,7 @@ public class GameWorld extends World
         int initialX = TILE_SIZE * 3;
 
         // Instantiate the main player object object
-        playerOne = new Viga(initialX, "a", "d", "w", "f", 100);
+        playerOne = new Viga(initialX, "a", "d", "w", "f");
 
         // Add player in bottom left corner of screen
         addObject(playerOne, initialX, getHeight() / 4 * 3);
@@ -252,7 +252,7 @@ public class GameWorld extends World
         int initialX = VISIBLE_WIDTH - TILE_SIZE * 3;
 
         // Instantiate the main player object object
-        playerTwo = new Guile(initialX, "left", "right", "up", "shift", getWidth() - 100);
+        playerTwo = new Guile(initialX, "left", "right", "up", "shift");
 
         // Add player in bottom left corner of screen
         addObject(playerTwo, initialX, getHeight() / 4 * 3);
