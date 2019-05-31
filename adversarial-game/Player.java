@@ -73,9 +73,12 @@ public abstract class Player extends Collision
     // Name of player images
     private String imageNamePrefix;
 
-    // Where this player's health is displayed horizontally
-    private int healthPosition;
-
+    // My health bar
+    HealthBar myHealth;
+    
+    //health kit
+    HealthKit refillHealth;
+    
     /**
      * Constructor
      * 
@@ -119,6 +122,9 @@ public abstract class Player extends Collision
 
         // Get images ready for punching animation
         initializePunchingImages();
+        
+        // Initialize the health bar
+        myHealth = new HealthBar(startingX, 200);
     }
 
     /**
@@ -197,7 +203,7 @@ public abstract class Player extends Collision
         }
         else if (Greenfoot.isKeyDown(punchKey) && !isGameOver)
         {
-            System.out.println("key received for punch");
+            //System.out.println("key received for punch");
             punch();
         }
         else
@@ -466,7 +472,7 @@ public abstract class Player extends Collision
         // Animate
         if (stage < punchingRightImages.length)
         {
-            System.out.println("in punch method" + stage);
+            //System.out.println("in punch method" + stage);
             // Set image for this stage of the animation
             if (horizontalDirection == FACING_RIGHT)
             {
@@ -480,23 +486,44 @@ public abstract class Player extends Collision
         }
         else
         {
-            // Get world reference
-            GameWorld world = (GameWorld)getWorld();
-
+            
+            // Get object reference to world
+            GameWorld world = (GameWorld) getWorld();
             // Check here for hit
             // (We have finished a punch and are touching another character)
             if (this.touch(Player.class))
-            {                
-                // Get a reference to the specific player we are touching
-                Player otherPlayer = (Player)this.getOneIntersectingObject(Player.class);
-                //GreenfootSound punch = new GreenfootSound("punch.mp3");
+            {
+                // Get a reference to the other player
+                Player otherPlayer = world.getPlayerOne();
+                
+                // Play sound
                 Greenfoot.playSound("punch.mp3");
-                otherPlayer.decreaseHealth();
+
+                // Make sure that this player object reference is the other player
+                if (otherPlayer == this)
+                {
+                    otherPlayer = world.getPlayerTwo();
+                }
+                
+                // Reduce that player's health
+                otherPlayer.getHealthBar().loseHealth();
+            }
+            else
+            {
+                world.showText("", 100, 100);
             }
 
             // Start animation loop from beginning
             punchingFrames = 0;
         }
+    }
+    
+    /**
+     * Returns the health bar for this player
+     */
+    public HealthBar getHealthBar()
+    {
+        return myHealth;
     }
 
     /**

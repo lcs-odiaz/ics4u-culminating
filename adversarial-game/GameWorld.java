@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameWorld extends World
 {
+    //creates a health bar object
     /**
      * Instance variables
      * 
@@ -32,10 +33,20 @@ public class GameWorld extends World
     // TO STUDENTS: Add to this list of constants if you wish to have additional player types
     public static final String PLAYER_GUILE = "guile";
     public static final String PLAYER_VIGA = "viga";
+    
+    // Track hits
+    private int hitsLanded;
 
     // Main player
     Player playerOne;
     Player playerTwo;
+    Decoration POneHB;
+    Decoration PTwoHB;
+    // makes health bar
+    HealthBar HealthBar;
+    
+    //makes Health Kit
+    Decoration HealthKit;
 
     // Track whether game is on
     private boolean isGameOver;
@@ -55,6 +66,14 @@ public class GameWorld extends World
 
         // Game on
         isGameOver = false;
+        
+        // No hits to start game
+        hitsLanded = 0;
+    }
+
+    public HealthBar getHealthBar()
+    {
+        return HealthBar;
     }
 
     
@@ -219,6 +238,9 @@ public class GameWorld extends World
 
         // Add player in bottom left corner of screen
         addObject(playerOne, initialX, getHeight() / 4 * 3);
+        
+        // Add the player's health bar in left corner the screen
+        addObject(playerOne.getHealthBar(), initialX, 50);
     }
 
     /**
@@ -234,14 +256,25 @@ public class GameWorld extends World
 
         // Add player in bottom left corner of screen
         addObject(playerTwo, initialX, getHeight() / 4 * 3);
+        
+        // Add the player's health bar in left corner the screen
+        addObject(playerTwo.getHealthBar(), initialX, 50);
     }
 
     /**
      * Return an object reference to the first player.
      */
-    public Player getMainPlayer()
+    public Player getPlayerOne()
     {
         return playerOne;
+    }
+
+    /**
+     * Return an object reference to the second player.
+     */
+    public Player getPlayerTwo()
+    {
+        return playerTwo;
     }
 
     /**
@@ -251,37 +284,21 @@ public class GameWorld extends World
     {
         isGameOver = true;
     }
-
-    private void addMetalPlateSteps()
+    
+    /**
+     * Record a hit.
+     */
+    public void hitLanded()
     {
-        // How many plates total?
-        final int COUNT_OF_METAL_PLATES = 20;
-        final int PLATES_PER_GROUP = 4;
-
-        // Add groups of plates
-        for (int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 1)
+        hitsLanded += 1;
+       
+        // Check to see if we've hit a threshold of hits where we want to add a HealthKit
+         if (hitsLanded % 5 == 0)
         {
-            // Group of four metal plates all at same y position
-            int y = VISIBLE_HEIGHT - HALF_TILE_SIZE * 3 - i * TILE_SIZE;
-
-            // Add the individual plates in a given group
-            for (int j = 0; j < PLATES_PER_GROUP; j += 1)
-            {
-                int x = VISIBLE_WIDTH + TILE_SIZE * 2 + TILE_SIZE * (i + j) + TILE_SIZE * 5 * i;
-                MetalPlate plate = new MetalPlate(x, y);
-                addObject(plate, x, y);
-            }
+           HealthKit hk = new HealthKit(VISIBLE_WIDTH/2,VISIBLE_HEIGHT -TILE_SIZE);
+           addObject(hk,TILE_SIZE * Greenfoot.getRandomNumber(18) + TILE_SIZE, VISIBLE_HEIGHT - TILE_SIZE - TILE_SIZE/2);
         }
+        
     }
-
-
-
-
-
-
-
-
-
-
 }
 

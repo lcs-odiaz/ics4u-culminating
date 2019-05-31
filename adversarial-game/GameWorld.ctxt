@@ -5,6 +5,7 @@ comment1.params=
 comment1.target=GameWorld()
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ GameWorld.\n
 comment10.params=
+<<<<<<< HEAD
 comment10.target=void\ addPlayerOne()
 comment10.text=\n\ Add\ the\ main\ player\ to\ the\ world.\n
 comment11.params=
@@ -18,10 +19,23 @@ comment13.target=void\ setGameOver()
 comment13.text=\n\ Set\ game\ over\n
 comment14.params=
 comment14.target=void\ addMetalPlateSteps()
+=======
+comment10.target=Player\ getPlayerOne()
+comment10.text=\n\ Return\ an\ object\ reference\ to\ the\ first\ player.\n
+comment11.params=
+comment11.target=Player\ getPlayerTwo()
+comment11.text=\n\ Return\ an\ object\ reference\ to\ the\ second\ player.\n
+comment12.params=
+comment12.target=void\ setGameOver()
+comment12.text=\n\ Set\ game\ over\n
+comment13.params=
+comment13.target=void\ hitLanded()
+comment13.text=\n\ Record\ a\ hit.\n
+>>>>>>> issue10
 comment2.params=
-comment2.target=void\ setup()
-comment2.text=\n\ Set\ up\ the\ entire\ world.\n
+comment2.target=HealthBar\ getHealthBar()
 comment3.params=
+<<<<<<< HEAD
 comment3.target=void\ ericLevel()
 comment4.params=
 comment4.target=void\ setBackground()
@@ -42,3 +56,26 @@ comment9.params=
 comment9.target=void\ act()
 comment9.text=\n\ Act\n\ \n\ This\ method\ is\ called\ approximately\ 60\ times\ per\ second.\n
 numComments=15
+=======
+comment3.target=void\ setup()
+comment3.text=\n\ Set\ up\ the\ entire\ world.\n
+comment4.params=
+comment4.target=void\ addLeftGround()
+comment4.text=\n\ Add\ blocks\ to\ create\ the\ ground\ to\ walk\ on\ at\ bottom-left\ of\ scrollable\ world.\n
+comment5.params=
+comment5.target=void\ addFences()
+comment5.text=\n\ Add\ some\ fences\ at\ left\ and\ right\ side.\n
+comment6.params=
+comment6.target=void\ addClouds()
+comment6.text=\n\ Add\ a\ few\ clouds\ for\ the\ opening\ scene.\n
+comment7.params=
+comment7.target=void\ act()
+comment7.text=\n\ Act\n\ \n\ This\ method\ is\ called\ approximately\ 60\ times\ per\ second.\n
+comment8.params=
+comment8.target=void\ addPlayerOne()
+comment8.text=\n\ Add\ the\ main\ player\ to\ the\ world.\n
+comment9.params=
+comment9.target=void\ addPlayerTwo()
+comment9.text=\n\ Add\ the\ main\ player\ to\ the\ world.\n
+numComments=14
+>>>>>>> issue10

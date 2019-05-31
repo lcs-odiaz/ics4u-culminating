@@ -6,19 +6,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Guile extends Player
+public class Link extends Player
 {
     //
-    boolean hitsGuile = false;
+    boolean hitsLink = false;
     /**
      * Constructor
      * 
      * Runs once when this object is created
      */
-    Guile(int startingX, String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey, int healthDisplayPosition)
+    Link(int startingX, String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey)
     {
         // Invoke the superclass constructor
-        super(startingX, "guile", 4, 3, moveLeftWithKey, moveRightWithKey, jumpWithKey, punchWithKey, healthDisplayPosition);
+        super(startingX, "link", 4, 3, moveLeftWithKey, moveRightWithKey, jumpWithKey, punchWithKey);
     }
 
     /**
