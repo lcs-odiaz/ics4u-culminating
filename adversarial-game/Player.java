@@ -197,7 +197,6 @@ public abstract class Player extends Collision
         }
         else if (Greenfoot.isKeyDown(punchKey) && !isGameOver)
         {
-            System.out.println("key received for punch");
             punch();
         }
         else
@@ -466,7 +465,6 @@ public abstract class Player extends Collision
         // Animate
         if (stage < punchingRightImages.length)
         {
-            System.out.println("in punch method" + stage);
             // Set image for this stage of the animation
             if (horizontalDirection == FACING_RIGHT)
             {
@@ -510,9 +508,9 @@ public abstract class Player extends Collision
 
         // Vertical position where player no longer visible
         int offScreenVerticalPosition = (world.getHeight() + this.getImage().getHeight() / 2);
-
-        // Off bottom of screen?
-        if (health == 0)
+        
+        // O health? or Off the bottom of the screen?
+        if (health == 0 || this.getY() > offScreenVerticalPosition)
         {
             // Remove the player
             isGameOver = true;

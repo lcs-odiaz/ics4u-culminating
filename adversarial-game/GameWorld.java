@@ -27,7 +27,7 @@ public class GameWorld extends World
     // Additional useful constants based on world size
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
-
+    
     // Names of all the players
     // TO STUDENTS: Add to this list of constants if you wish to have additional player types
     public static final String PLAYER_GUILE = "guile";
@@ -39,7 +39,10 @@ public class GameWorld extends World
 
     // Track whether game is on
     private boolean isGameOver;
-
+    
+    
+    public int background = Greenfoot.getRandomNumber(3);
+      
     /**
      * Constructor for objects of class GameWorld.
      */
@@ -65,7 +68,19 @@ public class GameWorld extends World
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
         setBackground();
-        ericLevel();
+        
+        if (background == 0)
+        {
+            ericLevel();
+        }    
+        else if (background == 1)
+        {
+            ericLevel2();
+        }
+        else if (background == 2)
+        {
+            ericLevel3();
+        }    
         setMusic();        
     }
 
@@ -117,6 +132,82 @@ public class GameWorld extends World
     
     }
     
+    private void ericLevel2()
+    {
+        // How many tiles will cover the bottom of the initial visible area of screen?
+        final int tilesToCreate = (getWidth() - 128) / TILE_SIZE;
+        
+        //Loop three times to make three sets of blocks
+        for (int j = 0; j < 65; j += 32)
+        {
+            // Loop to create and add the tile objects
+            for (int i = 0; i < tilesToCreate; i += 1)
+            {
+                // Add ground objects at bottom of screen
+                // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+                int x = i * TILE_SIZE + HALF_TILE_SIZE + 64;
+                int y = getHeight() - HALF_TILE_SIZE - j;
+        
+                // Create a ground tile
+                Ground groundTile = new Ground(x, y);
+        
+                // Add the objects
+                addObject(groundTile, x, y);
+            }
+        }
+        
+        addPlayerOne ();
+        addPlayerTwo();
+    
+    }
+    
+    private void ericLevel3()
+    {
+        // How many tiles will cover the bottom of the initial visible area of screen?
+        final int tilesToCreate = (getWidth() - 128) / TILE_SIZE;
+        
+        //Loop three times to make three sets of blocks
+        for (int j = 0; j < 65; j += 32)
+        {
+            // Loop to create and add the tile objects
+            for (int i = 0; i < tilesToCreate; i += 1)
+            {
+                // Add ground objects at bottom of screen
+                // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+                int x = i * TILE_SIZE + HALF_TILE_SIZE + 64;
+                int y = getHeight() - HALF_TILE_SIZE - j;
+        
+                // Create a ground tile
+                Ground groundTile = new Ground(x, y);
+        
+                // Add the objects
+                addObject(groundTile, x, y);
+            }
+        }
+        
+        addPlayerOne ();
+        addPlayerTwo();
+     
+        // How many plates total?
+        final int COUNT_OF_METAL_PLATES = 4;
+        final int PLATES_PER_GROUP = 4;
+
+         // Add groups of plates
+        for (int i = 272; i < 273; i += 1)
+        {
+            // Group of four metal plates all at same y position
+            int y = 272;
+
+            // Add the individual plates in a given group
+            for (int j = 0; j < 97; j += 32)
+            {
+                int x = i + j;
+                MetalPlate plate = new MetalPlate(x, y);
+                addObject(plate, x, y);
+            }
+        }
+    
+    }
     
     /**
     * Randomly choose and set a background
@@ -204,6 +295,10 @@ public class GameWorld extends World
      */
     public void act()
     {
+        if (background == 3)
+        {
+            
+        }
     }
 
     /**
@@ -273,15 +368,6 @@ public class GameWorld extends World
             }
         }
     }
-
-
-
-
-
-
-
-
-
 
 }
 
