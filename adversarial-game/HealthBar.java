@@ -7,8 +7,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HealthBar extends Decoration
 {
-
+    //Starting health
     int health = 8;
+    
+    //Sets the size of the health bar
     int HealthBarWidth = 80;
     int HealthBarHeight = 15;
     int PixelsPerHealthPoint = (int)HealthBarWidth/health;
@@ -22,14 +24,10 @@ public class HealthBar extends Decoration
         super(scrollableWorldX, scrollableWorldY);
     }
 
-    //public HealthBar()
-    //{
-    //    update(); //runs code when its created automatically
-    //}
-
     public void act() 
     {
-        update();//updates the code from the update code on the screen
+        //updates the code from the update code on the screen
+        update();
     }
 
     public void update()
