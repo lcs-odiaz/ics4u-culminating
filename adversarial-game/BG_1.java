@@ -12,8 +12,9 @@ public class BG_1 extends Decoration
     {
         super(scrollableWorldX, scrollableWorldY);
         
-            int x = Greenfoot.getRandomNumber(7);
-            setImage(x + ".png");
+        //Sets BG_1 to one of 7 random images
+        int x = Greenfoot.getRandomNumber(7);
+        setImage(x + ".png");
         
     } 
     
