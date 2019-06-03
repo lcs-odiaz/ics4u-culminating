@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class GameWorld extends World
 {
-    //creates a health bar object
     /**
      * Instance variables
      * 
@@ -42,6 +41,7 @@ public class GameWorld extends World
     Player playerTwo;
     Decoration POneHB;
     Decoration PTwoHB;
+    
     // makes health bar
     HealthBar HealthBar;
 
@@ -73,9 +73,11 @@ public class GameWorld extends World
         // No hits to start game
         hitsLanded = 0;
     }
-
+    
+    //
     public HealthBar getHealthBar()
     {
+        
         return HealthBar;
     }
 
@@ -84,6 +86,7 @@ public class GameWorld extends World
      */
     public void started()
     {
+        //Starts the music when the "Run" button is clicked
         setMusic();
     }
     
@@ -92,6 +95,7 @@ public class GameWorld extends World
      */
     public void stopped()
     {
+        //Stops the background music when the game ends
         backgroundMusic.stop();
     }
 
@@ -100,8 +104,10 @@ public class GameWorld extends World
      */
     private void setup()
     {
-        // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
+        // Generates a random background
         setBackground();
+        
+        // Sets up the level
         ericLevel();
     }
 
@@ -128,7 +134,8 @@ public class GameWorld extends World
                 addObject(groundTile, x, y);
             }
         }
-
+        
+        //Adds Player one and two
         addPlayerOne();
         addPlayerTwo();
 
@@ -158,6 +165,7 @@ public class GameWorld extends World
      */
     private void setBackground()
     {
+        //Sets the background to decoration BG_1
         Decoration background = new BG_1(VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2);
         addObject(background, VISIBLE_WIDTH / 2, VISIBLE_HEIGHT / 2-48);
     }
@@ -167,6 +175,7 @@ public class GameWorld extends World
      */
     private void setMusic()
     {
+        //Generates a random number. Each number corresponds to a different song that is played if the number of the song is chosen
         int x = Greenfoot.getRandomNumber(9);
         backgroundMusic = new GreenfootSound(x + ".mp3");
         backgroundMusic.playLoop();
@@ -295,6 +304,7 @@ public class GameWorld extends World
      */
     public void setGameOver()
     {
+        // Makes the game over
         isGameOver = true;
     }
 
@@ -303,6 +313,7 @@ public class GameWorld extends World
      */
     public void hitLanded()
     {
+        //Adds one to hits added
         hitsLanded += 1;
 
         // Check to see if we've hit a threshold of hits where we want to add a HealthKit

@@ -29,7 +29,8 @@ public class HealthKit extends Decoration
         {
             // get the actual object the health kit is touching
             Player thePlayer = (Player) getOneIntersectingObject(Player.class);
-
+            
+            
             thePlayer.getHealthBar().refillHealth();
 
             getWorld().removeObject(this);

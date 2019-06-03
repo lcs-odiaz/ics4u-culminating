@@ -84,8 +84,6 @@ public abstract class Player extends Collision
     Player(int startingX, String playerName, int walkingImagesCount, int punchingImagesCount,
     String moveLeftWithKey, String moveRightWithKey, String jumpWithKey, String punchWithKey)
     {
-        // Where the player's health gets displayed horizontally.
-
         // Assign how many walking image frames there are
         countOfWalkingImages = walkingImagesCount;
 
@@ -175,6 +173,7 @@ public abstract class Player extends Collision
      */
     public void act() 
     {
+        //Checks whether the player is falling, which keys are pressed, and whether the game is over
         checkFall();
         checkKeys();
         if (!isGameOver)
@@ -208,7 +207,7 @@ public abstract class Player extends Collision
             walkingFrames = 0;
         }
         
-        // Jumping
+        // Only allows jumps if the jump key is down, the game is on, and the player is on the ground and not falling
         if (Greenfoot.isKeyDown(jumpKey) && !isGameOver && verticalDirection == JUMPING_DOWN)
         {
             // Only able to jump when on a solid object
@@ -287,7 +286,6 @@ public abstract class Player extends Collision
         {
             return true;
         }
-    
         
     }
     
@@ -324,6 +322,7 @@ public abstract class Player extends Collision
         // See if direction has changed
         if (deltaY > 0)
         {
+            //Set the direction the player is going to down
             verticalDirection = JUMPING_DOWN;
 
             // Set image
