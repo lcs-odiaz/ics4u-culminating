@@ -57,9 +57,11 @@ public class HealthBar extends Decoration
         myWorld.hitLanded();
     }
     
+    //function that healthkit calls when picked up; heals the player and play a sound
     public void refillHealth()
     {
-        health = 8;
+        Greenfoot.playSound("heal.mp3");
+        health += 2;
     }
     
     public int getHealth()

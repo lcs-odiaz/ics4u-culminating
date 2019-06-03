@@ -15,7 +15,7 @@ public abstract class Player extends Collision
      * These are available for use in any method below.
      */    
     // Horizontal speed (change in horizontal position, or delta X)
-    private int deltaX = 4;
+    private int deltaX = 6;
 
     // Vertical speed (change in vertical position, or delta Y)
     private int deltaY = 0;
