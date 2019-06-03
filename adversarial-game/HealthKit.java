@@ -24,15 +24,13 @@ public class HealthKit extends Decoration
      */
     public void act() 
     {
-        // when health bar touches a character, their health refills
+        // when health bar touches a character, refill their health 
         if (this.isTouching(Player.class))
         {
             // get the actual object the health kit is touching
-            Player thePlayer = (Player) getOneIntersectingObject(Player.class);
-            
-            
+            Player thePlayer = (Player) getOneIntersectingObject(Player.class);            
+            //call the refill health function from healthbar to heal touching player
             thePlayer.getHealthBar().refillHealth();
-
             getWorld().removeObject(this);
         }  
 

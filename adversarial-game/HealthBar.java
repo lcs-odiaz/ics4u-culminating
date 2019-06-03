@@ -32,13 +32,13 @@ public class HealthBar extends Decoration
 
     public void update()
     {
-        //creates new image
+        //create a rectangle for empty health bar
         setImage(new GreenfootImage(HealthBarWidth + 2, HealthBarHeight + 2));
         GreenfootImage myImage = getImage();
         myImage.setColor(Color.BLACK);
         myImage.drawRect(0,0, HealthBarWidth + 1, HealthBarHeight + 1);
-        //draws a rectangle
-
+        
+        //fill it with red to indicate health
         myImage.setColor(Color.RED);
         myImage.fillRect(1,1, health*PixelsPerHealthPoint, HealthBarHeight);
 
@@ -46,12 +46,13 @@ public class HealthBar extends Decoration
 
     public void loseHealth()
     {
+        //reduce health
         health--;
         
         // Get an object reference to the world
         GameWorld myWorld = (GameWorld) getWorld();
         
-        // Tracks a hit
+        // Tracks a hit for healthkit spawning
         myWorld.hitLanded();
     }
     
@@ -62,6 +63,7 @@ public class HealthBar extends Decoration
         health += 2;
     }
     
+    //allows the current health of a player to be accessed elsewhere(eg to check for death)
     public int getHealth()
     {
         return health;
